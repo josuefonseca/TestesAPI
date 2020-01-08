@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="API_TESTESModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BOY">
+          <Key>
+            <PropertyRef Name="ID_BOY" />
+          </Key>
+          <Property Name="ID_BOY" Type="int" Nullable="false" />
+          <Property Name="NM_BOY" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="AGE_BOY" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BOY_TOY">
+          <Key>
+            <PropertyRef Name="ID_BOY_TOY" />
+          </Key>
+          <Property Name="ID_BOY_TOY" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_BOY" Type="int" Nullable="false" />
+          <Property Name="ID_TOY" Type="int" Nullable="false" />
+          <Property Name="DT_DONATION" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TOY">
+          <Key>
+            <PropertyRef Name="ID_TOY" />
+          </Key>
+          <Property Name="ID_TOY" Type="int" Nullable="false" />
+          <Property Name="NM_TOY" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_TP_TOY" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TP_TOY">
+          <Key>
+            <PropertyRef Name="ID_TP_TOY" />
+          </Key>
+          <Property Name="ID_TP_TOY" Type="int" Nullable="false" />
+          <Property Name="NM_TP_TOY" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="int" Nullable="false" />
+          <Property Name="NM_LOGIN" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="SENHA" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BOY_TOY_BOY">
+          <End Role="BOY" Type="Self.BOY" Multiplicity="1" />
+          <End Role="BOY_TOY" Type="Self.BOY_TOY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BOY">
+              <PropertyRef Name="ID_BOY" />
+            </Principal>
+            <Dependent Role="BOY_TOY">
+              <PropertyRef Name="ID_BOY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BOY_TOY_TOY">
+          <End Role="TOY" Type="Self.TOY" Multiplicity="1" />
+          <End Role="BOY_TOY" Type="Self.BOY_TOY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TOY">
+              <PropertyRef Name="ID_TOY" />
+            </Principal>
+            <Dependent Role="BOY_TOY">
+              <PropertyRef Name="ID_TOY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TOY_TP_TOY">
+          <End Role="TP_TOY" Type="Self.TP_TOY" Multiplicity="1" />
+          <End Role="TOY" Type="Self.TOY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TP_TOY">
+              <PropertyRef Name="ID_TP_TOY" />
+            </Principal>
+            <Dependent Role="TOY">
+              <PropertyRef Name="ID_TP_TOY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="API_TESTESModelStoreContainer">
+          <EntitySet Name="BOY" EntityType="Self.BOY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BOY_TOY" EntityType="Self.BOY_TOY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TOY" EntityType="Self.TOY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TP_TOY" EntityType="Self.TP_TOY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BOY_TOY_BOY" Association="Self.FK_BOY_TOY_BOY">
+            <End Role="BOY" EntitySet="BOY" />
+            <End Role="BOY_TOY" EntitySet="BOY_TOY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BOY_TOY_TOY" Association="Self.FK_BOY_TOY_TOY">
+            <End Role="TOY" EntitySet="TOY" />
+            <End Role="BOY_TOY" EntitySet="BOY_TOY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TOY_TP_TOY" Association="Self.FK_TOY_TP_TOY">
+            <End Role="TP_TOY" EntitySet="TP_TOY" />
+            <End Role="TOY" EntitySet="TOY" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="API_TESTESModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="API_TESTESEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BOY" EntityType="API_TESTESModel.BOY" />
+          <EntitySet Name="TOY" EntityType="API_TESTESModel.TOY" />
+          <EntitySet Name="TP_TOY" EntityType="API_TESTESModel.TP_TOY" />
+          <AssociationSet Name="FK_TOY_TP_TOY" Association="API_TESTESModel.FK_TOY_TP_TOY">
+            <End Role="TP_TOY" EntitySet="TP_TOY" />
+            <End Role="TOY" EntitySet="TOY" />
+          </AssociationSet>
+          <EntitySet Name="BOY_TOY" EntityType="API_TESTESModel.BOY_TOY" />
+          <AssociationSet Name="FK_BOY_TOY_BOY" Association="API_TESTESModel.FK_BOY_TOY_BOY">
+            <End Role="BOY" EntitySet="BOY" />
+            <End Role="BOY_TOY" EntitySet="BOY_TOY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BOY_TOY_TOY" Association="API_TESTESModel.FK_BOY_TOY_TOY">
+            <End Role="TOY" EntitySet="TOY" />
+            <End Role="BOY_TOY" EntitySet="BOY_TOY" />
+          </AssociationSet>
+          <EntitySet Name="USUARIO" EntityType="API_TESTESModel.USUARIO" />
+        </EntityContainer>
+        <EntityType Name="BOY">
+          <Key>
+            <PropertyRef Name="ID_BOY" />
+          </Key>
+          <Property Name="ID_BOY" Type="Int32" Nullable="false" />
+          <Property Name="NM_BOY" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="AGE_BOY" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BOY_TOY" Relationship="API_TESTESModel.FK_BOY_TOY_BOY" FromRole="BOY" ToRole="BOY_TOY" />
+        </EntityType>
+        <EntityType Name="TOY">
+          <Key>
+            <PropertyRef Name="ID_TOY" />
+          </Key>
+          <Property Name="ID_TOY" Type="Int32" Nullable="false" />
+          <Property Name="NM_TOY" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_TP_TOY" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TP_TOY" Relationship="API_TESTESModel.FK_TOY_TP_TOY" FromRole="TOY" ToRole="TP_TOY" />
+          <NavigationProperty Name="BOY_TOY" Relationship="API_TESTESModel.FK_BOY_TOY_TOY" FromRole="TOY" ToRole="BOY_TOY" />
+        </EntityType>
+        <EntityType Name="TP_TOY">
+          <Key>
+            <PropertyRef Name="ID_TP_TOY" />
+          </Key>
+          <Property Name="ID_TP_TOY" Type="Int32" Nullable="false" />
+          <Property Name="NM_TP_TOY" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TOY" Relationship="API_TESTESModel.FK_TOY_TP_TOY" FromRole="TP_TOY" ToRole="TOY" />
+        </EntityType>
+        <Association Name="FK_TOY_TP_TOY">
+          <End Type="API_TESTESModel.TP_TOY" Role="TP_TOY" Multiplicity="1" />
+          <End Type="API_TESTESModel.TOY" Role="TOY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TP_TOY">
+              <PropertyRef Name="ID_TP_TOY" />
+            </Principal>
+            <Dependent Role="TOY">
+              <PropertyRef Name="ID_TP_TOY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BOY_TOY">
+          <Key>
+            <PropertyRef Name="ID_BOY_TOY" />
+          </Key>
+          <Property Name="ID_BOY_TOY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_BOY" Type="Int32" Nullable="false" />
+          <Property Name="ID_TOY" Type="Int32" Nullable="false" />
+          <Property Name="DT_DONATION" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="BOY" Relationship="API_TESTESModel.FK_BOY_TOY_BOY" FromRole="BOY_TOY" ToRole="BOY" />
+          <NavigationProperty Name="TOY" Relationship="API_TESTESModel.FK_BOY_TOY_TOY" FromRole="BOY_TOY" ToRole="TOY" />
+        </EntityType>
+        <Association Name="FK_BOY_TOY_BOY">
+          <End Type="API_TESTESModel.BOY" Role="BOY" Multiplicity="1" />
+          <End Type="API_TESTESModel.BOY_TOY" Role="BOY_TOY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BOY">
+              <PropertyRef Name="ID_BOY" />
+            </Principal>
+            <Dependent Role="BOY_TOY">
+              <PropertyRef Name="ID_BOY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BOY_TOY_TOY">
+          <End Type="API_TESTESModel.TOY" Role="TOY" Multiplicity="1" />
+          <End Type="API_TESTESModel.BOY_TOY" Role="BOY_TOY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TOY">
+              <PropertyRef Name="ID_TOY" />
+            </Principal>
+            <Dependent Role="BOY_TOY">
+              <PropertyRef Name="ID_TOY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+          <Property Name="NM_LOGIN" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="SENHA" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="API_TESTESModelStoreContainer" CdmEntityContainer="API_TESTESEntities">
+        <EntitySetMapping Name="BOY">
+            <EntityTypeMapping TypeName="API_TESTESModel.BOY">
+              <MappingFragment StoreEntitySet="BOY">
+                <ScalarProperty Name="AGE_BOY" ColumnName="AGE_BOY" />
+                <ScalarProperty Name="NM_BOY" ColumnName="NM_BOY" />
+                <ScalarProperty Name="ID_BOY" ColumnName="ID_BOY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOY">
+            <EntityTypeMapping TypeName="API_TESTESModel.TOY">
+              <MappingFragment StoreEntitySet="TOY">
+                <ScalarProperty Name="ID_TP_TOY" ColumnName="ID_TP_TOY" />
+                <ScalarProperty Name="NM_TOY" ColumnName="NM_TOY" />
+                <ScalarProperty Name="ID_TOY" ColumnName="ID_TOY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TP_TOY">
+            <EntityTypeMapping TypeName="API_TESTESModel.TP_TOY">
+              <MappingFragment StoreEntitySet="TP_TOY">
+                <ScalarProperty Name="NM_TP_TOY" ColumnName="NM_TP_TOY" />
+                <ScalarProperty Name="ID_TP_TOY" ColumnName="ID_TP_TOY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BOY_TOY">
+            <EntityTypeMapping TypeName="API_TESTESModel.BOY_TOY">
+              <MappingFragment StoreEntitySet="BOY_TOY">
+                <ScalarProperty Name="DT_DONATION" ColumnName="DT_DONATION" />
+                <ScalarProperty Name="ID_TOY" ColumnName="ID_TOY" />
+                <ScalarProperty Name="ID_BOY" ColumnName="ID_BOY" />
+                <ScalarProperty Name="ID_BOY_TOY" ColumnName="ID_BOY_TOY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="API_TESTESModel.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="SENHA" ColumnName="SENHA" />
+                <ScalarProperty Name="NM_LOGIN" ColumnName="NM_LOGIN" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

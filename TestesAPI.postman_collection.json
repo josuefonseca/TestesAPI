@@ -1,0 +1,224 @@
+{
+	"info": {
+		"_postman_id": "46910a80-ae19-4100-a170-177f02adf979",
+		"name": "TestesAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Autenticar",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "josue",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44391/api/autenticar",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44391",
+					"path": [
+						"api",
+						"autenticar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Meninos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer HNNnGbLLczqU1wzsTykb_ZwcYExBbd4x4VuuHcNdPe7bBj_bRvslbcnag4vYW1LrGSXOQbktohRN5RiJVhFzqA-d8Id1ueLUxpQ2H4tz5szdJVkEz7lAF7Ct01hRISldR6Ij8oYRTAHMwOF1Nr-WbiR5OTEUuGBvSOIZ9atOn7ZjeUS3la7lquDhnzerGNIVJsfmdcwqSj2a3CirQMUJeGubTkXiztUusU71RyWXh_E",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Id\" : \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44391/api/meninos",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44391",
+					"path": [
+						"api",
+						"meninos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Meninos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer HNNnGbLLczqU1wzsTykb_ZwcYExBbd4x4VuuHcNdPe7bBj_bRvslbcnag4vYW1LrGSXOQbktohRN5RiJVhFzqA-d8Id1ueLUxpQ2H4tz5szdJVkEz7lAF7Ct01hRISldR6Ij8oYRTAHMwOF1Nr-WbiR5OTEUuGBvSOIZ9atOn7ZjeUS3la7lquDhnzerGNIVJsfmdcwqSj2a3CirQMUJeGubTkXiztUusU71RyWXh_E",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Nome\": \"Marcos\",\n\t\"Idade\": 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44391/api/meninos",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44391",
+					"path": [
+						"api",
+						"meninos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Meninos",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer HNNnGbLLczqU1wzsTykb_ZwcYExBbd4x4VuuHcNdPe7bBj_bRvslbcnag4vYW1LrGSXOQbktohRN5RiJVhFzqA-d8Id1ueLUxpQ2H4tz5szdJVkEz7lAF7Ct01hRISldR6Ij8oYRTAHMwOF1Nr-WbiR5OTEUuGBvSOIZ9atOn7ZjeUS3la7lquDhnzerGNIVJsfmdcwqSj2a3CirQMUJeGubTkXiztUusU71RyWXh_E",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Id\": 6\n\t\"Nome\": \"Luiz\",\n\t\"Idade\": 7\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44391/api/meninos",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44391",
+					"path": [
+						"api",
+						"meninos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Meninos",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer HNNnGbLLczqU1wzsTykb_ZwcYExBbd4x4VuuHcNdPe7bBj_bRvslbcnag4vYW1LrGSXOQbktohRN5RiJVhFzqA-d8Id1ueLUxpQ2H4tz5szdJVkEz7lAF7Ct01hRISldR6Ij8oYRTAHMwOF1Nr-WbiR5OTEUuGBvSOIZ9atOn7ZjeUS3la7lquDhnzerGNIVJsfmdcwqSj2a3CirQMUJeGubTkXiztUusU71RyWXh_E",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Id\" : 7\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44391/api/meninos",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44391",
+					"path": [
+						"api",
+						"meninos"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="713234e93e764275b6f5e8bca52ec68c" Name="Diagram1">
+        <EntityTypeShape EntityType="API_TESTESModel.BOY" Width="1.5" PointX="3.125" PointY="3.75" />
+        <EntityTypeShape EntityType="API_TESTESModel.TOY" Width="1.5" PointX="6" PointY="0.875" />
+        <EntityTypeShape EntityType="API_TESTESModel.TP_TOY" Width="1.5" PointX="3.75" PointY="1" />
+        <AssociationConnector Association="API_TESTESModel.FK_TOY_TP_TOY" />
+        <EntityTypeShape EntityType="API_TESTESModel.BOY_TOY" Width="1.5" PointX="8.25" PointY="2.125" />
+        <AssociationConnector Association="API_TESTESModel.FK_BOY_TOY_BOY" />
+        <AssociationConnector Association="API_TESTESModel.FK_BOY_TOY_TOY" />
+        <EntityTypeShape EntityType="API_TESTESModel.USUARIO" Width="1.5" PointX="0.75" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

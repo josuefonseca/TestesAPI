@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="API_TESTESModelStoreContainer" CdmEntityContainer="API_TESTESEntities">
+    <EntitySetMapping Name="BOY">
+      <EntityTypeMapping TypeName="API_TESTESModel.BOY">
+        <MappingFragment StoreEntitySet="BOY">
+          <ScalarProperty Name="AGE_BOY" ColumnName="AGE_BOY" />
+          <ScalarProperty Name="NM_BOY" ColumnName="NM_BOY" />
+          <ScalarProperty Name="ID_BOY" ColumnName="ID_BOY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TOY">
+      <EntityTypeMapping TypeName="API_TESTESModel.TOY">
+        <MappingFragment StoreEntitySet="TOY">
+          <ScalarProperty Name="ID_TP_TOY" ColumnName="ID_TP_TOY" />
+          <ScalarProperty Name="NM_TOY" ColumnName="NM_TOY" />
+          <ScalarProperty Name="ID_TOY" ColumnName="ID_TOY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TP_TOY">
+      <EntityTypeMapping TypeName="API_TESTESModel.TP_TOY">
+        <MappingFragment StoreEntitySet="TP_TOY">
+          <ScalarProperty Name="NM_TP_TOY" ColumnName="NM_TP_TOY" />
+          <ScalarProperty Name="ID_TP_TOY" ColumnName="ID_TP_TOY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BOY_TOY">
+      <EntityTypeMapping TypeName="API_TESTESModel.BOY_TOY">
+        <MappingFragment StoreEntitySet="BOY_TOY">
+          <ScalarProperty Name="DT_DONATION" ColumnName="DT_DONATION" />
+          <ScalarProperty Name="ID_TOY" ColumnName="ID_TOY" />
+          <ScalarProperty Name="ID_BOY" ColumnName="ID_BOY" />
+          <ScalarProperty Name="ID_BOY_TOY" ColumnName="ID_BOY_TOY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

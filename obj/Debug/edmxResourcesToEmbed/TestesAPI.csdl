@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="API_TESTESModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="API_TESTESEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BOY" EntityType="API_TESTESModel.BOY" />
+    <EntitySet Name="TOY" EntityType="API_TESTESModel.TOY" />
+    <EntitySet Name="TP_TOY" EntityType="API_TESTESModel.TP_TOY" />
+    <AssociationSet Name="FK_TOY_TP_TOY" Association="API_TESTESModel.FK_TOY_TP_TOY">
+      <End Role="TP_TOY" EntitySet="TP_TOY" />
+      <End Role="TOY" EntitySet="TOY" />
+    </AssociationSet>
+    <EntitySet Name="BOY_TOY" EntityType="API_TESTESModel.BOY_TOY" />
+    <AssociationSet Name="FK_BOY_TOY_BOY" Association="API_TESTESModel.FK_BOY_TOY_BOY">
+      <End Role="BOY" EntitySet="BOY" />
+      <End Role="BOY_TOY" EntitySet="BOY_TOY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BOY_TOY_TOY" Association="API_TESTESModel.FK_BOY_TOY_TOY">
+      <End Role="TOY" EntitySet="TOY" />
+      <End Role="BOY_TOY" EntitySet="BOY_TOY" />
+    </AssociationSet>
+    <EntitySet Name="USUARIO" EntityType="API_TESTESModel.USUARIO" />
+  </EntityContainer>
+  <EntityType Name="BOY">
+    <Key>
+      <PropertyRef Name="ID_BOY" />
+    </Key>
+    <Property Name="ID_BOY" Type="Int32" Nullable="false" />
+    <Property Name="NM_BOY" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AGE_BOY" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BOY_TOY" Relationship="API_TESTESModel.FK_BOY_TOY_BOY" FromRole="BOY" ToRole="BOY_TOY" />
+  </EntityType>
+  <EntityType Name="TOY">
+    <Key>
+      <PropertyRef Name="ID_TOY" />
+    </Key>
+    <Property Name="ID_TOY" Type="Int32" Nullable="false" />
+    <Property Name="NM_TOY" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ID_TP_TOY" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TP_TOY" Relationship="API_TESTESModel.FK_TOY_TP_TOY" FromRole="TOY" ToRole="TP_TOY" />
+    <NavigationProperty Name="BOY_TOY" Relationship="API_TESTESModel.FK_BOY_TOY_TOY" FromRole="TOY" ToRole="BOY_TOY" />
+  </EntityType>
+  <EntityType Name="TP_TOY">
+    <Key>
+      <PropertyRef Name="ID_TP_TOY" />
+    </Key>
+    <Property Name="ID_TP_TOY" Type="Int32" Nullable="false" />
+    <Property Name="NM_TP_TOY" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TOY" Relationship="API_TESTESModel.FK_TOY_TP_TOY" FromRole="TP_TOY" ToRole="TOY" />
+  </EntityType>
+  <Association Name="FK_TOY_TP_TOY">
+    <End Type="API_TESTESModel.TP_TOY" Role="TP_TOY" Multiplicity="1" />
+    <End Type="API_TESTESModel.TOY" Role="TOY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TP_TOY">
+        <PropertyRef Name="ID_TP_TOY" />
+      </Principal>
+      <Dependent Role="TOY">
+        <PropertyRef Name="ID_TP_TOY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="BOY_TOY">
+    <Key>
+      <PropertyRef Name="ID_BOY_TOY" />
+    </Key>
+    <Property Name="ID_BOY_TOY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_BOY" Type="Int32" Nullable="false" />
+    <Property Name="ID_TOY" Type="Int32" Nullable="false" />
+    <Property Name="DT_DONATION" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="BOY" Relationship="API_TESTESModel.FK_BOY_TOY_BOY" FromRole="BOY_TOY" ToRole="BOY" />
+    <NavigationProperty Name="TOY" Relationship="API_TESTESModel.FK_BOY_TOY_TOY" FromRole="BOY_TOY" ToRole="TOY" />
+  </EntityType>
+  <Association Name="FK_BOY_TOY_BOY">
+    <End Type="API_TESTESModel.BOY" Role="BOY" Multiplicity="1" />
+    <End Type="API_TESTESModel.BOY_TOY" Role="BOY_TOY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BOY">
+        <PropertyRef Name="ID_BOY" />
+      </Principal>
+      <Dependent Role="BOY_TOY">
+        <PropertyRef Name="ID_BOY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BOY_TOY_TOY">
+    <End Type="API_TESTESModel.TOY" Role="TOY" Multiplicity="1" />
+    <End Type="API_TESTESModel.BOY_TOY" Role="BOY_TOY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TOY">
+        <PropertyRef Name="ID_TOY" />
+      </Principal>
+      <Dependent Role="BOY_TOY">
+        <PropertyRef Name="ID_TOY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="ID_USUARIO" />
+    </Key>
+    <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+    <Property Name="NM_LOGIN" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="SENHA" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>
